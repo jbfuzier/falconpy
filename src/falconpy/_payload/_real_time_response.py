@@ -105,16 +105,21 @@ def data_payload(passed_keywords: dict) -> dict:
         "comments_for_audit_log": "string",
         "content": "string",
         "platform": "string",
-        "permission_type": "string"
+        "permission_type": "string",
+        "workflow_input_schema": "string",
+        "workflow_output_schema": "string",
+        "share_with_workflow": "bool",
+        "workflow_is_disruptive": "bool"
     }
     """
     returned_payload = {}
     keys = [
         "id", "description", "name", "comments_for_audit_log",
-        "content", "platform", "permission_type"
+        "content", "platform", "permission_type", "workflow_is_disruptive",
+        "workflow_input_schema","workflow_output_schema", "share_with_workflow"
         ]
     for key in keys:
-        if passed_keywords.get(key, None):
+        if passed_keywords.get(key, None) is not None:
             returned_payload[key] = passed_keywords.get(key, None)
 
     return returned_payload
